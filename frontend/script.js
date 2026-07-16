@@ -1,66 +1,45 @@
-/**
- * script.js - Frontend Logic
- *
- * This file handles all communication between the webpage and the FastAPI backend.
- * We use the Fetch API (built into every browser) to send HTTP requests.
- */
 
-// ─── Configuration ──────────────────────────────────────────────
-// The base URL of our FastAPI backend
 const API_BASE = "http://localhost:8000";
 
 
-// ─── Load all URLs when the page first opens ────────────────────
-// This runs automatically when the page loads
 window.addEventListener("DOMContentLoaded", () => {
     fetchAllURLs();
 });
 
-
-// ─── Shorten URL ────────────────────────────────────────────────
-/**
- * Called when the user clicks the "Shorten URL" button.
- *
- * Steps:
- *   1. Get the URL from the input box
- *   2. Send a POST request to /shorten with the URL
- *   3. Display the shortened URL in the result section
- *   4. Refresh the list of all URLs
- */
 async function shortenURL() {
     const input = document.getElementById("url-input");
     const originalURL = input.value.trim();
 
-    // Basic validation — make sure the input isn't empty
+    // make sure the input isn't empty
     if (!originalURL) {
         alert("Please enter a URL!");
         return;
     }
 
     try {
-        // Send POST request to the backend
+        // send POST request to the backend
         const response = await fetch(`${API_BASE}/shorten`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ original_url: originalURL }),
         });
 
-        // Parse the JSON response
+        // parse the JSON response
         const data = await response.json();
 
-        // Show the result section
+        // show the result section
         const resultSection = document.getElementById("result-section");
         resultSection.classList.remove("hidden");
 
-        // Display the short URL as a clickable link
+        // display short URL as clickable link
         const shortURLLink = document.getElementById("short-url");
         shortURLLink.href = data.short_url;
         shortURLLink.textContent = data.short_url;
 
-        // Clear the input box
+        // clear input box
         input.value = "";
 
-        // Refresh the URL list to show the new one
+        // refresh url list 
         fetchAllURLs();
     } catch (error) {
         alert("Error shortening URL. Is the backend running?");
@@ -68,11 +47,6 @@ async function shortenURL() {
     }
 }
 
-
-// ─── Copy URL to Clipboard ─────────────────────────────────────
-/**
- * Copies the shortened URL to the clipboard when "Copy" is clicked.
- */
 function copyURL() {
     const shortURL = document.getElementById("short-url").textContent;
     navigator.clipboard.writeText(shortURL).then(() => {
@@ -86,15 +60,6 @@ function copyURL() {
 }
 
 
-// ─── Fetch All URLs ─────────────────────────────────────────────
-/**
- * Fetches all shortened URLs from the backend and displays them.
- *
- * This is called:
- *   - When the page first loads
- *   - After creating a new short URL
- *   - After deleting a URL
- */
 async function fetchAllURLs() {
     try {
         const response = await fetch(`${API_BASE}/urls`);
@@ -102,14 +67,14 @@ async function fetchAllURLs() {
 
         const urlsList = document.getElementById("urls-list");
 
-        // If there are no URLs, show a friendly message
+        // if no URLs, show friendly message
         if (urls.length === 0) {
             urlsList.innerHTML =
                 '<p class="empty-message">No URLs shortened yet. Try one above!</p>';
             return;
         }
 
-        // Build HTML for each URL card
+        // build HTML for each URL card
         urlsList.innerHTML = urls
             .map(
                 (url) => `
@@ -138,14 +103,8 @@ async function fetchAllURLs() {
 }
 
 
-// ─── Delete URL ─────────────────────────────────────────────────
-/**
- * Deletes a shortened URL by its short code.
- *
- * Called when the user clicks the "Delete" button on a URL card.
- */
 async function deleteURL(shortCode) {
-    // Ask for confirmation before deleting
+    // ask for confirmation before deleting
     if (!confirm("Are you sure you want to delete this URL?")) {
         return;
     }
@@ -155,7 +114,7 @@ async function deleteURL(shortCode) {
             method: "DELETE",
         });
 
-        // Refresh the list after deletion
+        // refresh list 
         fetchAllURLs();
     } catch (error) {
         alert("Error deleting URL.");
