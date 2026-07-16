@@ -1,0 +1,20 @@
+# ─── Python ───────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+env/
+
+# ─── Docker ───────────────────────
+*.log
+
+# ─── IDE ──────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ─── OS ───────────────────────────
+.DS_Store
+Thumbs.db
