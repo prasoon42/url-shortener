@@ -6,109 +6,114 @@
 }
 
 body {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #F4F1EA; /* Eggshell white */
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     padding: 40px 16px;
-    color: #e0e0e0;
+    color: #333333;
+}
+
+/* ─── App Wrapper ────────────────────────────────────────────── */
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 640px;
 }
 
 /* ─── Main Container ─────────────────────────────────────────── */
 .container {
-    background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 40px 36px;
-    max-width: 640px;
-    width: 100%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 /* ─── Header ─────────────────────────────────────────────────── */
 header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 24px;
 }
 
 h1 {
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #1a1a1a;
     margin-bottom: 6px;
 }
 
 .subtitle {
     font-size: 0.95rem;
-    color: #a0a0b8;
+    color: #666666;
 }
 
 /* ─── Input Section ──────────────────────────────────────────── */
 .input-section {
     display: flex;
     gap: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 #url-input {
     flex: 1;
     padding: 14px 18px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: #333333;
     font-size: 0.95rem;
     outline: none;
-    transition: border-color 0.3s;
+    transition: border-color 0.2s;
 }
 
 #url-input::placeholder {
-    color: #7a7a9a;
+    color: #94a3b8;
 }
 
 #url-input:focus {
-    border-color: #7c5cfc;
+    border-color: #3b82f6;
+    background: #ffffff;
 }
 
 #shorten-btn {
     padding: 14px 24px;
-    background: linear-gradient(135deg, #7c5cfc, #a855f7);
+    background: #3b82f6;
     color: #ffffff;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: background 0.2s;
     white-space: nowrap;
 }
 
 #shorten-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(124, 92, 252, 0.4);
+    background: #2563eb;
 }
 
 #shorten-btn:active {
-    transform: translateY(0);
+    background: #1d4ed8;
 }
 
 /* ─── Result Section ─────────────────────────────────────────── */
 .result-section {
-    background: rgba(124, 92, 252, 0.1);
-    border: 1px solid rgba(124, 92, 252, 0.25);
-    border-radius: 14px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
     padding: 18px 20px;
-    margin-bottom: 28px;
     text-align: center;
     animation: fadeIn 0.4s ease;
 }
 
 .result-section p {
     font-size: 0.85rem;
-    color: #a0a0b8;
+    color: #475569;
     margin-bottom: 10px;
 }
 
@@ -120,7 +125,7 @@ h1 {
 }
 
 .result-box a {
-    color: #a78bfa;
+    color: #2563eb;
     font-size: 1.05rem;
     font-weight: 600;
     text-decoration: none;
@@ -133,43 +138,43 @@ h1 {
 
 .copy-btn {
     padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #d0d0e0;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
     font-size: 0.8rem;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .copy-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #f1f5f9;
 }
 
 /* ─── All URLs Section ───────────────────────────────────────── */
 .urls-section {
-    margin-top: 8px;
+    margin-top: 0;
 }
 
 .urls-section h2 {
     font-size: 1.15rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #1a1a1a;
     margin-bottom: 16px;
 }
 
 .empty-message {
     text-align: center;
-    color: #6a6a8a;
+    color: #64748b;
     font-size: 0.9rem;
     padding: 20px 0;
 }
 
 /* ─── Individual URL Card ────────────────────────────────────── */
 .url-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
     padding: 16px 18px;
     margin-bottom: 10px;
     display: flex;
@@ -180,7 +185,7 @@ h1 {
 }
 
 .url-card:hover {
-    background: rgba(255, 255, 255, 0.08);
+    background: #f8fafc;
 }
 
 .url-info {
@@ -189,7 +194,7 @@ h1 {
 }
 
 .url-info .short-link {
-    color: #a78bfa;
+    color: #2563eb;
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
@@ -202,7 +207,7 @@ h1 {
 }
 
 .url-info .original-link {
-    color: #7a7a9a;
+    color: #64748b;
     font-size: 0.8rem;
     white-space: nowrap;
     overflow: hidden;
@@ -219,26 +224,26 @@ h1 {
 
 .clicks-badge {
     font-size: 0.75rem;
-    color: #a0a0b8;
-    background: rgba(255, 255, 255, 0.06);
+    color: #475569;
+    background: #f1f5f9;
     padding: 4px 10px;
-    border-radius: 20px;
+    border-radius: 12px;
     white-space: nowrap;
 }
 
 .delete-btn {
     padding: 8px 14px;
-    background: rgba(239, 68, 68, 0.15);
-    color: #f87171;
-    border: 1px solid rgba(239, 68, 68, 0.25);
-    border-radius: 8px;
+    background: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
     font-size: 0.8rem;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .delete-btn:hover {
-    background: rgba(239, 68, 68, 0.3);
+    background: #fee2e2;
 }
 
 /* ─── Utility Classes ────────────────────────────────────────── */
@@ -261,7 +266,7 @@ h1 {
 /* ─── Responsive Design ─────────────────────────────────────── */
 @media (max-width: 500px) {
     .container {
-        padding: 28px 18px;
+        padding: 24px 16px;
     }
 
     .input-section {

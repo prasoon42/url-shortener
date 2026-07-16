@@ -8,36 +8,38 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-        <!-- ─── Header ─────────────────────────────── -->
-        <header>
-            <h1>🔗 URL Shortener</h1>
-            <p class="subtitle">Paste a long URL and get a short one instantly</p>
-        </header>
+    <div class="app-wrapper">
+        <div class="container">
+            <!-- ─── Header ─────────────────────────────── -->
+            <header>
+                <h1>URL Shortener</h1>
+                <p class="subtitle">Paste a long URL and get a short one instantly</p>
+            </header>
 
-        <!-- ─── Input Section ──────────────────────── -->
-        <div class="input-section">
-            <input
-                type="url"
-                id="url-input"
-                placeholder="Paste your long URL here..."
-                autocomplete="off"
-            />
-            <button id="shorten-btn" onclick="shortenURL()">Shorten URL</button>
-        </div>
+            <!-- ─── Input Section ──────────────────────── -->
+            <div class="input-section">
+                <input
+                    type="url"
+                    id="url-input"
+                    placeholder="Paste your long URL here..."
+                    autocomplete="off"
+                />
+                <button id="shorten-btn" onclick="shortenURL()">Shorten URL</button>
+            </div>
 
-        <!-- ─── Result Section (hidden by default) ─── -->
-        <div id="result-section" class="result-section hidden">
-            <p>Your shortened URL:</p>
-            <div class="result-box">
-                <a id="short-url" href="#" target="_blank"></a>
-                <button class="copy-btn" onclick="copyURL()">Copy</button>
+            <!-- ─── Result Section (hidden by default) ─── -->
+            <div id="result-section" class="result-section hidden">
+                <p>Your shortened URL:</p>
+                <div class="result-box">
+                    <a id="short-url" href="#" target="_blank"></a>
+                    <button class="copy-btn" onclick="copyURL()">Copy</button>
+                </div>
             </div>
         </div>
 
         <!-- ─── All URLs Section ───────────────────── -->
-        <div class="urls-section">
-            <h2>📋 All Shortened URLs</h2>
+        <div class="container urls-section">
+            <h2>All Shortened URLs</h2>
             <div id="urls-list">
                 <p class="empty-message">No URLs shortened yet. Try one above!</p>
             </div>
